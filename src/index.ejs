@@ -11,20 +11,9 @@
         %>
     </head>
     <body>
-    <div id="sales-floor">
-        <% include salesFloor/salesFloor.ejs %>
-    </div>
-    <div id="cart-bar" hidden>
-        <% include cartBar/cartBar.ejs %>
-    </div>
-    <div id="settings" hidden>
-        <% include settings/settings.ejs %>
-    </div>
-    <div id="checkout" hidden>
-        <% include checkout/checkout.ejs %>
-    </div>
-    <div id="processing" hidden>
-        <% include processing/processing.ejs %>
+    <% include pages/main/index.ejs %>
+    <div id="failure" hidden>
+        <% include application/components/crashHandler/crashHandler.ejs %>
     </div>
     <%-
     // noinspection JSUnresolvedVariable

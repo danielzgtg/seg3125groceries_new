@@ -2,7 +2,8 @@
 // TS as a documentation and commenting layer on top of JS
 
 import './index.scss';
-// import toss from './basketball';
-import { init } from './controller';
+import Application from './application/application';
+import install from './sw/init';
 
-init();
+install();
+new Application(document.body);

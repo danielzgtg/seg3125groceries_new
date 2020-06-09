@@ -2,9 +2,10 @@
 // SCSS as a documentation and commenting layer on top of CSS
 
 @import 'theme/global';
-@import 'cartBar/cartBar';
-@import 'settings/settings';
-@import 'salesFloor/salesFloor';
-@import 'checkout/checkout';
-@import 'basketball/basketball';
-@import 'processing/processing';
+@import 'application/components/crashHandler/crashHandler';
+@import 'pages/main/components/cartBar/cartBar';
+@import 'pages/main/components/settings/settings';
+@import 'pages/main/components/salesFloor/salesFloor';
+@import 'pages/main/components/checkout/checkout';
+@import 'pages/main/basketball/basketball';
+@import 'pages/main/components/processing/processing';

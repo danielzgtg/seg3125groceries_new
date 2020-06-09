@@ -4,41 +4,46 @@
 
 // Quality-of-life
 * {
-  box-sizing: border-box;
-  //user-select: none;
+    box-sizing: border-box;
+    //user-select: none;
 }
 
 label {
-  touch-action: manipulation;
+    touch-action: manipulation;
 }
 
 %no-margin {
-  margin: 0;
+    margin: 0;
 }
 
 html, body {
-  @extend %no-margin;
-  width: 100%;
-  height: 100%;
+    @extend %no-margin;
+    width: 100%;
+    height: 100%;
 }
 
 section, h1 {
-  @extend %no-margin;
+    @extend %no-margin;
 }
 
 h2, h3 {
-  @extend %no-margin;
-  padding: 10px;
+    @extend %no-margin;
+    padding: 10px;
 }
 
 h2 {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 table {
-  width: 100%;
+    width: 100%;
 }
 
 td, th {
-  padding: 10px;
+    padding: 10px;
+}
+
+noscript {
+    background: yellow;
+    color: red;
 }

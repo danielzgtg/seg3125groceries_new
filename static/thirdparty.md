@@ -31,7 +31,7 @@ Those sources were not consulted for any specific to this lab.
 
 ## Imported technologies
 
-This project indirectly depends on 1736 NPM packages.
+This project indirectly depends on ~2000 NPM packages.
 
 None of those are actually required for the substance of the lab.
 Removal of them will not negatively affect the lab much.

@@ -1,0 +1,15 @@
+@import '../../../partials';
+
+#failure {
+    @extend %modal;
+
+    & > aside {
+        background-color: black;
+        color: red;
+
+        & > span {
+            font-size: 64px;
+            font-weight: bold;
+        }
+    }
+}

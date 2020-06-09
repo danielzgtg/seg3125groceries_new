@@ -1,4 +1,3 @@
-
 import path from 'path';
 import webpack from 'webpack';
 // eslint-disable-next-line sort-imports
@@ -10,6 +9,11 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import TerserJSPlugin from 'terser-webpack-plugin';
 import WebpackManifestPlugin from 'webpack-manifest-plugin';
+
+// @ts-ignore
+// eslint-disable-next-line sort-imports
+import _OfflinePlugin from 'offline-plugin';
+const OfflinePlugin: new (options: any) => webpack.Plugin = _OfflinePlugin;
 
 const openPath = 'seg3125groceries/';
 const publicPath = `/${openPath}`;
@@ -47,6 +51,15 @@ function plugins(devMode: boolean): NonNullable<webpack.Configuration['plugins']
                 'static',
             ],
         }),
+        ...devMode ? [] : [new OfflinePlugin({
+            autoUpdate: true,
+            version: '1',
+            serviceWorker: {
+                cacheName: 'seg',
+                events: true,
+                minify: true,
+            },
+        })],
     ];
 }
 
