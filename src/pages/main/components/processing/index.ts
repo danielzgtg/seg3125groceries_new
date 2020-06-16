@@ -29,14 +29,15 @@ export default class Processing {
                 setTimeout(() => {
                     // Show checkmark
                     control.hidden = true;
-                    // Dismiss after 1 second
-                    setTimeout(() => {
-                        cart.onCheckout = () => {
-                            cart.onCheckout = void 0;
+                    // Empty cart once payment processed
+                    cart.onCheckout = () => {
+                        cart.onCheckout = void 0;
+                        // Dismiss after 1 second
+                        setTimeout(() => {
                             stateMachine.salesFloor();
-                        };
-                        cart.checkout();
-                    }, 1000);
+                        }, 1000);
+                    };
+                    cart.checkout();
                 }, 2000);
                 stateMachine.addOnceListener(() => {
                     outermost.hidden = true;

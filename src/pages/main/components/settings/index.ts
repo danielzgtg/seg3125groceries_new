@@ -1,6 +1,5 @@
 import type { Category, Qualities } from '../../../../models';
 import { findOrThrow, MutableObservable, Observable } from '../../../../utils';
-import { MainPageStateMachine, SettingsState } from '../../state';
 
 function bindCategory(
     outermost: HTMLElement, observable: MutableObservable<Category | null>,
@@ -34,17 +33,12 @@ export default class Settings {
     /**
      * The selected category.
      */
-    readonly category: Observable<Category | null>;
+    readonly category: MutableObservable<Category | null>;
 
-    constructor(outermost: HTMLElement, stateMachine: MainPageStateMachine) {
+    constructor(outermost: HTMLElement) {
         this.outermost = outermost;
         const qualities = this.qualities = new MutableObservable<Qualities>({});
         const category = this.category = new MutableObservable<Category | null>(null);
-        // Wire the close button
-        const button = outermost.querySelector('[aria-label]');
-        if (!(button instanceof HTMLElement)) {
-            throw new TypeError;
-        }
 
         // Find the checkboxes
         const vegetarian = findOrThrow(outermost, 'vegetarian', HTMLInputElement);
@@ -77,11 +71,5 @@ export default class Settings {
         bindCategory(outermost, category, 'category5', 'bakery');
         bindCategory(outermost, category, 'category6', 'pantry');
         bindCategory(outermost, category, 'category7', 'drink');
-
-        // Close button
-        button.onclick = () => stateMachine.salesFloor();
-        stateMachine.addListener((src, dest) => {
-            outermost.hidden = !(dest instanceof SettingsState);
-        });
     }
 }

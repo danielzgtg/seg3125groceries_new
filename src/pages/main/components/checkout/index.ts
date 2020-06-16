@@ -123,6 +123,11 @@ export default class Checkout {
      */
     private netCell: HTMLElement;
 
+    /**
+     * The purchase button.
+     */
+    private purchase: HTMLElement;
+
     // This is kind of acting more than just a cache because the full rebuild logic has been omitted.
     // This also allows for stability
     /**
@@ -144,7 +149,7 @@ export default class Checkout {
         const empty = findOrThrow(outermost, 'empty', HTMLElement);
         empty.onclick = () => this.cart.emptyCart();
         // Wire the purchase button
-        const purchase = findOrThrow(outermost, 'purchase', HTMLElement);
+        const purchase = this.purchase = findOrThrow(outermost, 'purchase', HTMLElement);
         // Find the tbody
         const tbody = outermost.querySelector('tbody');
         if (!tbody) {
@@ -164,6 +169,8 @@ export default class Checkout {
         // TODO wire buttons towards the cart and back
         // Wire updates from cart
         cart.onItemQuantityChanged = this.doUpdate.bind(this);
+        // Initial tick
+        this.updateTotals();
 
         // State Transitions
         const dismiss = () => stateMachine.salesFloor();
@@ -225,6 +232,8 @@ export default class Checkout {
         this.grossCell.innerText = renderPrice(gross);
         this.hstCell.innerText = renderPrice(hst);
         this.netCell.innerText = renderPrice(net);
+        // Prevent checkout with empty cart
+        this.purchase.hidden = !gross;
     }
 
     /**

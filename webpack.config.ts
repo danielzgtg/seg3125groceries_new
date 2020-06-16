@@ -15,7 +15,9 @@ import WebpackManifestPlugin from 'webpack-manifest-plugin';
 import _OfflinePlugin from 'offline-plugin';
 const OfflinePlugin: new (options: any) => webpack.Plugin = _OfflinePlugin;
 
-const openPath = 'seg3125groceries/';
+import locale from './src/locale.json';
+
+const openPath = 'seg3125groceries_new/';
 const publicPath = `/${openPath}`;
 const distPath = path.resolve(__dirname, `dist${publicPath}`);
 
@@ -45,6 +47,8 @@ function plugins(devMode: boolean): NonNullable<webpack.Configuration['plugins']
                 sortClassName: true,
             },
             xhtml: true,
+            // Passed to templates
+            locale,
         }),
         new CopyWebpackPlugin({
             patterns: [

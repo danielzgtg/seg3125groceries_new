@@ -23,8 +23,11 @@ export default class Cart {
     /**
      * Adds a copy of an item to the cart by its ID.
      */
-    addItem(id: string): void {
-        this.quantities[id] = (this.quantities[id] || 0) + 1;
+    addItem(id: string, quantity = 1): void {
+        if (quantity < 1) {
+            throw new TypeError;
+        }
+        this.quantities[id] = (this.quantities[id] || 0) + quantity;
         // eslint-disable-next-line no-unused-expressions -- TODO ESLint bug
         this.onItemQuantityChanged?.(id);
         this.updateTotals();

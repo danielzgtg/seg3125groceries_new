@@ -2,16 +2,30 @@
 <!--suppress HtmlUnknownTag -->
 <html lang="en">
     <head>
+        <%
+        function localize(...path) {
+            // noinspection JSUnresolvedVariable,NodeModulesDependencies
+            let result = htmlWebpackPlugin.options.locale;
+            for (const segment of path) {
+                result = result[segment];
+            }
+            if (!result) {
+                throw new TypeError;
+            }
+            return result;
+        }
+        %>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Ottawa Market</title>
+        <title>Serious Market</title>
+
         <%-
         // noinspection JSUnresolvedVariable
         htmlWebpackPlugin.tags.headTags
         %>
     </head>
     <body>
-    <% include pages/main/index.ejs %>
+    <% include pages/main/main.ejs %>
     <div id="failure" hidden>
         <% include application/components/crashHandler/crashHandler.ejs %>
     </div>

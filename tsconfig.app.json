@@ -15,6 +15,7 @@
     "forceConsistentCasingInFileNames": true,
     "importsNotUsedAsValues": "error",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "lib": [
       "es5",
       "es6",

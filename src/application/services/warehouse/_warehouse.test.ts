@@ -26,6 +26,13 @@ test('all prices are valid', () => {
     }
 });
 
+it('contains at least 10', () => {
+    const w = new Warehouse;
+    w.refresh();
+    const size = w.getListing({}, null).length;
+    expect(size).toBeGreaterThanOrEqual(10);
+});
+
 it('orders prices ascending', () => {
     const w = new Warehouse;
     w.refresh();

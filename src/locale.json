@@ -1,0 +1,11 @@
+{
+  "categories": {
+    "fruit": "Fruits",
+    "vegetable": "Veggies",
+    "meat": "Meat",
+    "dairy": "Dairy",
+    "bakery": "Bakery",
+    "pantry": "Pantry",
+    "drink": "Drinks"
+  }
+}

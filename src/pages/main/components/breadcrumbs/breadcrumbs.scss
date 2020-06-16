@@ -1,0 +1,53 @@
+@import '../../../../_partials';
+
+// The top bar that shows the count
+#breadcrumbs {
+    background: whitesmoke;
+    border: 1px solid grey;
+    overflow: hidden;
+    user-select: none;
+
+    @media (min-width: $responsive-width) {
+        margin: $font-size 0;
+    }
+
+    // Icon handled by icons.scss
+}
+
+// Breadcrumbs section
+#breadcrumbs > nav {
+    display: inline-block;
+    padding: $padding;
+    font-size: $font-size;
+
+    & > span:not(.here) {
+        &::after {
+            content: '》';
+        }
+    }
+}
+
+#here-sale, #here-category {
+    &:not(.here) {
+        cursor: pointer;
+    }
+}
+
+// Cart section
+#breadcrumbs > section {
+    float: right;
+    padding: $padding;
+    cursor: pointer;
+    background: deepskyblue;
+
+    & > * {
+        pointer-events: none;
+    }
+
+    // Total count
+    & > span {
+        padding-left: $padding;
+        font-size: $font-size;
+        color: black;
+    }
+}

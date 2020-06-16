@@ -16,6 +16,13 @@ it('registers items going in', () => {
     expect(c.getItemQuantity('test')).toEqual(3);
 });
 
+it('registers bulk items going in', () => {
+    const c = new Cart;
+    expect(c.getItemQuantity('test')).toEqual(0);
+    c.addItem('test', 100);
+    expect(c.getItemQuantity('test')).toEqual(100);
+});
+
 test('is completely emptied', () => {
     const c = new Cart;
     expect(c.getItemQuantity('test')).toEqual(0);
@@ -90,8 +97,7 @@ it('triggers insertion callback', () => {
 it('triggers removal callback', () => {
     const c = new Cart;
     c.addItem('test');
-    c.addItem('test');
-    c.addItem('test');
+    c.addItem('test', 2);
     const m = jest.fn();
     c.onItemQuantityChanged = m;
     expect(m).toHaveBeenCalledTimes(0);
@@ -123,9 +129,7 @@ it('triggers total removal callback', () => {
     c.addItem('foo');
     c.addItem('foo');
     c.addItem('biz');
-    c.addItem('bar');
-    c.addItem('bar');
-    c.addItem('bar');
+    c.addItem('bar', 3);
     c.onTotalChanged = m;
     expect(m).toHaveBeenCalledTimes(0);
     c.removeItem('bar');

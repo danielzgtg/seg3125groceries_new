@@ -1,7 +1,9 @@
 import type Application from '../../application/application';
-import CartBar from './components/cartBar';
+import Breadcrumbs from './components/breadcrumbs';
 import Checkout from './components/checkout';
+import Details from './components/details';
 import { findOrThrow } from '../../utils';
+import Listings from './components/listings';
 import { MainPageStateMachine } from './state';
 import Processing from './components/processing';
 import SalesFloor from './components/salesFloor';
@@ -13,9 +15,11 @@ import Settings from './components/settings';
 export default class MainPage {
     readonly stateMachine: MainPageStateMachine;
 
-    readonly cartBar: CartBar;
-    readonly settings: Settings;
+    readonly breadcrumbs: Breadcrumbs;
     readonly salesFloor: SalesFloor;
+    readonly settings: Settings;
+    readonly listings: Listings;
+    readonly details: Details;
     readonly checkout: Checkout;
     readonly processing: Processing;
 
@@ -25,19 +29,21 @@ export default class MainPage {
         const { cart, warehouse } = application;
 
         // UI binding
-        this.cartBar = new CartBar(
-            findOrThrow(outermost, 'cart-bar', HTMLDivElement),
-            cart, stateMachine,
+        this.salesFloor = new SalesFloor(
+            findOrThrow(outermost, 'sales-floor', HTMLDivElement),
+            stateMachine,
         );
         const settings = this.settings = new Settings(
             findOrThrow(outermost, 'settings', HTMLDivElement),
+        );
+        this.listings = new Listings(
+            findOrThrow(outermost, 'listings', HTMLDivElement),
+            warehouse, cart, settings,
             stateMachine,
         );
-        this.salesFloor = new SalesFloor(
-            findOrThrow(outermost, 'sales-floor', HTMLDivElement),
-            warehouse, cart,
-            settings,
-            stateMachine,
+        this.details = new Details(
+            findOrThrow(outermost, 'details', HTMLDivElement),
+            warehouse, cart, stateMachine,
         );
         this.checkout = new Checkout(
             findOrThrow(outermost, 'checkout', HTMLDivElement),
@@ -47,6 +53,11 @@ export default class MainPage {
         this.processing = new Processing(
             findOrThrow(outermost, 'processing', HTMLDivElement),
             cart, stateMachine,
+        );
+        this.breadcrumbs = new Breadcrumbs(
+            findOrThrow(outermost, 'breadcrumbs', HTMLDivElement),
+            warehouse, cart, settings,
+            stateMachine,
         );
 
         // Initial Tick

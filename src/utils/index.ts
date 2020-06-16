@@ -21,4 +21,19 @@ export function findOrThrow<T>(container: HTMLElement, id: string, type: new () 
     throw new TypeError;
 }
 
+/**
+ * Always returns the result of the specified query.
+ *
+ * If that is not possible, a TypeError is thrown.
+ */
+export function querySelectorOrThrow<T extends HTMLElement>(
+    container: HTMLElement, query: string, type: new() => T,
+): T {
+    const result = container.querySelector(query);
+    if (!(result instanceof type)) {
+        throw new TypeError;
+    }
+    return result;
+}
+
 export { Observer, Observable, MutableObservable, State, StateMachine } from './_state';

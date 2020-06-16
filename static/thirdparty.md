@@ -24,10 +24,9 @@ None of the work in that folder is mine, expect possibly a minimal amount for th
 
 ## Layout
 
-Having used Android and/or Google products for the past 5+ years has greatly shaped my design tastes.
-These involve things like fonts, snackbars, input fields, the intentionally limited page width, among other things.
+Parts of the look-and-feel was inspired by what the Amazon and Walmart websites looked a few years ago.
 
-Those sources were not consulted for any specific to this lab.
+Those sources were not consulted for any code used in this lab.
 
 ## Imported technologies
 

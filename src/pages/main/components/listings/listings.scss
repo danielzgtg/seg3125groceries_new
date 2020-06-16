@@ -1,0 +1,52 @@
+@import '../../../../_partials';
+
+#listings {
+    overflow: hidden;
+}
+
+// Floating card flattens when too compressed
+#listings {
+    border: 1px solid black;
+}
+
+// Items
+#listings > main > section > article {
+    overflow: hidden;
+    cursor: pointer;
+    vertical-align: top;
+
+    &:nth-child(even) {
+        background: lightsteelblue;
+    }
+
+    &:nth-child(odd) {
+        background: whitesmoke;
+    }
+
+    & > div {
+        float: left;
+        width: 200px;
+        height: 200px;
+        background: sandybrown linear-gradient(magenta, black) center / cover;
+        pointer-events: none; // Internet Explorer
+    }
+
+    & > label {
+        display: block;
+        padding: $padding;
+        font-size: $font-size;
+        word-wrap: break-word;
+        overflow: hidden;
+        pointer-events: none;
+        user-select: none;
+
+        & > span + span {
+            display: block;
+            color: forestgreen;
+
+            &::before {
+                content: '$';
+            }
+        }
+    }
+}

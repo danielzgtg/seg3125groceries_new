@@ -1,11 +1,12 @@
+<% include components/caps/header.ejs %>
+<div id="breadcrumbs">
+    <% include components/breadcrumbs/breadcrumbs.ejs %>
+</div>
 <div id="sales-floor">
     <% include components/salesFloor/salesFloor.ejs %>
 </div>
-<div id="cart-bar" hidden>
-    <% include components/cartBar/cartBar.ejs %>
-</div>
-<div id="settings" hidden>
-    <% include components/settings/settings.ejs %>
+<div id="details" hidden>
+    <% include components/details/details.ejs %>
 </div>
 <div id="checkout" hidden>
     <% include components/checkout/checkout.ejs %>
@@ -13,3 +14,4 @@
 <div id="processing" hidden>
     <% include components/processing/processing.ejs %>
 </div>
+<% include components/caps/footer.ejs %>

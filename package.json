@@ -1,7 +1,7 @@
 {
-  "name": "seg3125grocieries",
+  "name": "seg3125groceries_new",
   "version": "1.0.0",
-  "description": "SEG3125 Module 2",
+  "description": "SEG3125 Module 3",
   "private": true,
   "sideEffects": [
     "*.scss",

@@ -17,7 +17,27 @@ export class SalesFloorState extends MainPageStateBase {
     }
 
     canTransitionTo(dest: MainPageState): boolean {
-        return dest instanceof SettingsState || dest instanceof CheckoutState;
+        return dest instanceof DetailsState || dest instanceof CheckoutState;
+    }
+}
+
+/**
+ * Looking at the details of an item.
+ */
+export class DetailsState extends MainPageStateBase {
+    readonly id: string;
+
+    constructor(id: string) {
+        super();
+        this.id = id;
+    }
+
+    canTransitionFrom(src: MainPageState): boolean {
+        return src instanceof SalesFloorState;
+    }
+
+    canTransitionTo(dest: MainPageState): boolean {
+        return dest instanceof SalesFloorState || dest instanceof CheckoutState;
     }
 }
 
@@ -26,24 +46,11 @@ export class SalesFloorState extends MainPageStateBase {
  */
 export class CheckoutState extends MainPageStateBase {
     canTransitionFrom(src: MainPageState): boolean {
-        return src instanceof SalesFloorState;
+        return src instanceof SalesFloorState || src instanceof DetailsState;
     }
 
     canTransitionTo(dest: MainPageState): boolean {
         return dest instanceof SalesFloorState || dest instanceof ProcessingState;
-    }
-}
-
-/**
- * Setting search filters in "settings" to see their effect in the listing.
- */
-export class SettingsState extends MainPageStateBase {
-    canTransitionFrom(src: MainPageState): boolean {
-        return src instanceof SalesFloorState;
-    }
-
-    canTransitionTo(dest: MainPageState): boolean {
-        return dest instanceof SalesFloorState;
     }
 }
 
@@ -60,11 +67,10 @@ export class ProcessingState extends MainPageStateBase {
     }
 }
 
-export type MainPageState = SalesFloorState | CheckoutState | SettingsState | ProcessingState;
+export type MainPageState = SalesFloorState | DetailsState | CheckoutState | ProcessingState;
 
 const SALES_FLOOR = new SalesFloorState;
 const CHECKOUT = new CheckoutState;
-const SETTINGS = new SettingsState;
 const PROCESSING = new ProcessingState;
 
 /**
@@ -82,12 +88,12 @@ export class MainPageStateMachine extends StateMachine<MainPageState> {
         this.setValue(SALES_FLOOR);
     }
 
-    checkout(): void {
-        this.setValue(CHECKOUT);
+    details(id: string): void {
+        this.setValue(new DetailsState(id));
     }
 
-    settings(): void {
-        this.setValue(SETTINGS);
+    checkout(): void {
+        this.setValue(CHECKOUT);
     }
 
     processing(): void {

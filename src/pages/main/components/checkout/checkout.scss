@@ -1,23 +1,21 @@
-@import '../../../../partials';
+@import '../../../../_partials';
 
 // The checkout
-#checkout {
-    // This one is always flush to the edges, and never like a dialog
-    @extend %modal;
+#checkout > main {
+    @extend %title-and-button;
+
+    padding: $padding;
+    border: 1px solid black;
 
     // Icon handled by icons.scss
 
-    // Pop in from bottom
-    top: 0;
-    transition: top .3s;
-    &[hidden] {
-        display: initial;
-        top: 100vh;
-    }
-
-    & > main > table {
+    & > table {
         font-size: $font-size;
         border-collapse: collapse;
+
+        td, th {
+            border: 1px solid grey;
+        }
 
         td:not(:nth-child(2)) {
             // Align all numbers right
@@ -30,7 +28,7 @@
         }
 
         td:nth-last-child(2), td:not(:empty):nth-last-child(3) {
-            &:before {
+            &::before {
                 content: '$';
             }
         }
@@ -38,12 +36,12 @@
         & > tbody > tr {
             // Alternate row colors for easy reading
             &:nth-child(odd) {
-                background: papayawhip;
+                background: lightsteelblue;
             }
 
             // Balance sheet gross
             &:last-child > td:nth-last-child(2) {
-                border-bottom: 1px solid black;
+                border-bottom: 1px solid grey;
             }
         }
 
@@ -55,7 +53,7 @@
 
             // Balance sheet net
             &:last-child > td:nth-last-child(2) {
-                border-bottom: 3px double black;
+                border-bottom: 3px double grey;
             }
         }
     }
@@ -76,18 +74,12 @@ table + div {
     display: inline-block;
     padding: 10px;
     font-size: $font-size;
-    background: rgba(#000, .2);
-    transition: transform .3s, box-shadow .3s, border-color .3s;
+    background: deepskyblue;
     border: 1px solid black;
     cursor: pointer;
     user-select: none;
 
-    &:hover {
-        transform: scale(1.2);
-        box-shadow: $box-shadow;
-    }
-
-    &:active {
-        border-color: transparent;
+    &[hidden] {
+        display: none;
     }
 }
