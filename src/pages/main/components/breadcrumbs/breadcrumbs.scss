@@ -2,10 +2,10 @@
 
 // The top bar that shows the count
 #breadcrumbs {
-    background: whitesmoke;
-    border: 1px solid grey;
     overflow: hidden;
     user-select: none;
+    background: whitesmoke;
+    border: 1px solid grey;
 
     @media (min-width: $responsive-width) {
         margin: $font-size 0;
@@ -20,7 +20,7 @@
     padding: $padding;
     font-size: $font-size;
 
-    & > span:not(.here) {
+    > span:not(.here) {
         &::after {
             content: '》';
         }
@@ -40,12 +40,12 @@
     cursor: pointer;
     background: deepskyblue;
 
-    & > * {
+    > * {
         pointer-events: none;
     }
 
     // Total count
-    & > span {
+    > span {
         padding-left: $padding;
         font-size: $font-size;
         color: black;

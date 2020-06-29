@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-recess-order"
+  ],
+  "rules": {
+    "declaration-property-value-blacklist": null,
+    "color-named": null,
+    "scss/at-import-no-partial-leading-underscore": null,
+    "selector-max-id": null,
+    "indentation": [4],
+    "selector-list-comma-newline-after": "always-multi-line",
+    "selector-max-compound-selectors": null,
+    "max-nesting-depth": 3,
+    "no-descending-specificity": null,
+    "declaration-empty-line-before": ["always", {
+      "except": [
+        "first-nested"
+      ],
+      "ignore": [
+        "after-declaration",
+        "after-comment",
+        "inside-single-line-block"
+      ]
+    }],
+    "selector-no-qualifying-type": null,
+    "color-no-invalid-hex": true,
+    "order/properties-alphabetical-order": null
+  }
+}

@@ -7,6 +7,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import merge from 'webpack-merge';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import StylelintPlugin from 'stylelint-webpack-plugin';
 import TerserJSPlugin from 'terser-webpack-plugin';
 import WebpackManifestPlugin from 'webpack-manifest-plugin';
 
@@ -31,6 +32,19 @@ function plugins(devMode: boolean): NonNullable<webpack.Configuration['plugins']
         new MiniCssExtractPlugin({
             filename: 'styles/[name].[contentHash].css',
         }),
+        new StylelintPlugin({
+            context: 'src',
+            syntax: 'scss',
+            files: '**/*.scss',
+            emitError: true,
+            emitWarning: true,
+            failOnError: true,
+            failOnWarning: true,
+            // TODO make sure these two work when upstream fixes them
+            reportNeedlessDisables: true,
+            // @ts-ignore // TODO waiting for upstream @types
+            reportInvalidScopeDisables: true,
+        }),
         new HtmlWebpackPlugin({
             template: '!!ejs-compiled-loader?{}!./src/index.ejs',
             inject: false,
@@ -46,7 +60,6 @@ function plugins(devMode: boolean): NonNullable<webpack.Configuration['plugins']
                 sortAttributes: true,
                 sortClassName: true,
             },
-            xhtml: true,
             // Passed to templates
             locale,
         }),
@@ -70,7 +83,7 @@ function plugins(devMode: boolean): NonNullable<webpack.Configuration['plugins']
 const base: webpack.Configuration = {
     entry: {
         polyfills: './src/polyfills.ts',
-        'css-normalize': './src/theme/css-normalize.ts',
+        framework: './src/theme/framework.ts',
         main: './src/index.ts',
     },
     devServer: {

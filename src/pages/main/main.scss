@@ -8,8 +8,8 @@
 
 @media (min-width: $responsive-width) {
     html, body {
-        margin: $font-size;
         width: initial;
         height: initial;
+        margin: $font-size;
     }
 }

@@ -6,14 +6,14 @@ $font-size: 32px;
 %title-and-button {
     // Get the close button positioned without hardcoding the layout
 
-    & > div[aria-label] {
+    > div[aria-label] {
         // TODO This button still looks a bit off
         float: left;
     }
 
-    & > h2 {
+    > h2 {
         padding-left: $padding;
-        text-align: center;
         overflow: hidden;
+        text-align: center;
     }
 }

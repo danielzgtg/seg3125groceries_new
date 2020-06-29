@@ -7,17 +7,17 @@
 
 @media (min-width: $responsive-width) {
     #settings {
-        float: left;
-        margin-right: $font-size;
         position: sticky;
         top: $font-size;
+        float: left;
+        margin-right: $font-size;
     }
 }
 
 #settings > aside > div {
     display: inline-block;
-    padding: $padding;
     float: right;
+    padding: $padding;
     clear: right;
     text-align: left;
     user-select: none;
@@ -29,10 +29,10 @@
         }
     }
 
-    & > label {
+    > label {
         display: block;
 
-        & > input {
+        > input {
             vertical-align: middle;
         }
     }

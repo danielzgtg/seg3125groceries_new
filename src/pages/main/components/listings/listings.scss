@@ -2,18 +2,16 @@
 
 #listings {
     overflow: hidden;
-}
 
-// Floating card flattens when too compressed
-#listings {
+    // Floating card flattens when too compressed
     border: 1px solid black;
 }
 
 // Items
 #listings > main > section > article {
     overflow: hidden;
-    cursor: pointer;
     vertical-align: top;
+    cursor: pointer;
 
     &:nth-child(even) {
         background: lightsteelblue;
@@ -23,24 +21,24 @@
         background: whitesmoke;
     }
 
-    & > div {
+    > div {
         float: left;
         width: 200px;
         height: 200px;
-        background: sandybrown linear-gradient(magenta, black) center / cover;
         pointer-events: none; // Internet Explorer
+        background: sandybrown linear-gradient(magenta, black) center / cover;
     }
 
-    & > label {
+    > label {
         display: block;
         padding: $padding;
+        overflow: hidden;
         font-size: $font-size;
         word-wrap: break-word;
-        overflow: hidden;
         pointer-events: none;
         user-select: none;
 
-        & > span + span {
+        > span + span {
             display: block;
             color: forestgreen;
 

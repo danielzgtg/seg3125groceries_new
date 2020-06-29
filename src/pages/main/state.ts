@@ -11,8 +11,7 @@ abstract class MainPageStateBase implements State<MainPageState> {
  * Browsing the "salesFloor" component at a glance with a huge list of products.
  */
 export class SalesFloorState extends MainPageStateBase {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    canTransitionFrom(src: MainPageState): boolean {
+    canTransitionFrom(): boolean {
         return true;
     }
 

@@ -1,9 +1,10 @@
 @import '../../../../_partials';
 
 header, footer {
-    text-align: center;
     // Normal padding doesn't seem to be enough anymore
     padding: $font-size;
+
+    text-align: center;
 }
 
 header {

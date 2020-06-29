@@ -7,8 +7,8 @@ div:empty {
         display: inline-block;
         width: $font-size;
         height: $font-size;
-        background: transparent linear-gradient(magenta, black) center / contain no-repeat;
         cursor: pointer;
+        background: transparent linear-gradient(magenta, black) center / contain no-repeat;
     }
 
     // ### The actual icons ###

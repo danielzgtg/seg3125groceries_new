@@ -1,22 +1,22 @@
 @font-face {
-  font-family: 'Liberation Serif';
-  src: url('../res/liberation/LiberationSerif-Regular.ttf') format('truetype');
-  font-style: normal;
-  font-weight: normal;
+    font-family: 'Liberation Serif';
+    src: url('../res/liberation/LiberationSerif-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
 }
 
 @font-face {
-  font-family: 'Liberation Serif';
-  src: url('../res/liberation/LiberationSerif-Bold.ttf') format('truetype');
-  font-style: normal;
-  font-weight: bold;
+    font-family: 'Liberation Serif';
+    src: url('../res/liberation/LiberationSerif-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: bold;
 }
 
 @font-face {
-  font-family: 'Noto Color Emoji';
-  src: url('../res/noto/NotoColorEmoji.ttf') format('truetype');
+    font-family: 'Noto Color Emoji';
+    src: url('../res/noto/NotoColorEmoji.ttf') format('truetype');
 }
 
 * {
-  font-family: 'Liberation Serif', 'Noto Color Emoji', serif;
+    font-family: 'Liberation Serif', 'Noto Color Emoji', serif;
 }
